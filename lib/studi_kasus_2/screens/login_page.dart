@@ -8,7 +8,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final auth = Provider.of<AuthProvider>(context);
+    final auth = Provider.of<AuthProvider>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(title: Text("Login")),
@@ -22,6 +22,11 @@ class LoginPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 auth.login(usernameController.text, passwordController.text);
+                if (auth.isLoggedIn) {
+                  Navigator.pushReplacementNamed(context, '/main');
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login gagal')));
+                }
               },
               child: Text("Login"),
             ),

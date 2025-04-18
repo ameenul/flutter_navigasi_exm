@@ -15,11 +15,12 @@ class MainPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Bottom Nav App"),
+        title: Text("Main Page"),
         actions: [
           IconButton(
             onPressed: () {
               auth.logout();
+              Navigator.pushReplacementNamed(context, '/');
             },
             icon: Icon(Icons.logout),
           )
@@ -29,7 +30,7 @@ class MainPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: pageProvider.currentIndex,
         onTap: (index) => pageProvider.setIndex(index),
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
