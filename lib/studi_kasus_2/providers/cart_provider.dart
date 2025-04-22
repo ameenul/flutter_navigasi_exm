@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 
-class CartProvider with ChangeNotifier {
-  List<String> _items = [];
+class CartProvider extends ChangeNotifier {
+  final Map<String, int> _items = {};
 
-  List<String> get items => _items;
+  // Tambahkan ini:
+  Map<String, int> get items => _items;
 
-  void addItem(String item) {
-    _items.add(item);
+  void addItem(String product) {
+    if (_items.containsKey(product)) {
+      _items[product] = _items[product]! + 1;
+    } else {
+      _items[product] = 1;
+    }
     notifyListeners();
   }
 
-  void removeItem(String item) {
-    _items.remove(item);
+  void removeOne(String product) {
+    if (!_items.containsKey(product)) return;
+
+    if (_items[product]! > 1) {
+      _items[product] = _items[product]! - 1;
+    } else {
+      _items.remove(product);
+    }
     notifyListeners();
   }
 
-  void clearCart() {
-    _items.clear();
+  void removeItem(String product) {
+    _items.remove(product);
     notifyListeners();
   }
+
+  int get totalItems => _items.values.fold(0, (sum, qty) => sum + qty);
 }
