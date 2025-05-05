@@ -5,6 +5,8 @@ import '../../providers/cart_provider.dart';
 class HomeTab extends StatelessWidget {
   final List<String> products = ['Apel', 'Jeruk', 'Pisang', 'Mangga'];
 
+  HomeTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(

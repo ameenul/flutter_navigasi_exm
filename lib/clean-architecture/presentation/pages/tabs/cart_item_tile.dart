@@ -5,7 +5,7 @@ import '../../providers/cart_provider.dart';
 class CartItemTile extends StatelessWidget {
   final String productName;
 
-  const CartItemTile({required this.productName});
+  const CartItemTile({super.key, required this.productName});
 
   @override
   Widget build(BuildContext context) {

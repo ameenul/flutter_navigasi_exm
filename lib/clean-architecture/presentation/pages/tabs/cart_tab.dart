@@ -4,6 +4,8 @@ import '../../providers/cart_provider.dart';
 import 'cart_item_tile.dart';
 
 class CartTab extends StatelessWidget {
+  const CartTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<CartProvider>(

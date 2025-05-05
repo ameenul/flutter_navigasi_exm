@@ -9,6 +9,8 @@ import '../providers/auth_provider.dart';
 
 
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final pageProvider = context.watch<PageProvider>();

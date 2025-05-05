@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../../providers/theme_provider.dart';
 
 class ProfileTab extends StatelessWidget {
+  const ProfileTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
