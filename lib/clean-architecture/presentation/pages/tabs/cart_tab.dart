@@ -8,10 +8,9 @@ class CartTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<CartProvider>(
-      builder: (context, cartProvider, _) {
-        final itemKeys = cartProvider.items.keys.toList();
-
+    return Selector<CartProvider, List<String>>(
+      selector: (_, provider) => provider.items.keys.toList(),
+      builder: (context, itemKeys, _) {
         if (itemKeys.isEmpty) {
           return Center(child: Text("Keranjang kosong"));
         }
