@@ -8,15 +8,18 @@ class CartTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<CartProvider, List<String>>(
-      selector: (_, provider) => provider.items.keys.toList(),
-      builder: (context, itemKeys, _) {
-        if (itemKeys.isEmpty) {
+    return Selector<CartProvider, int>(
+      selector: (_, provider) => provider.items.length,
+      builder: (context, itemCount, _) {
+        if (itemCount == 0) {
           return Center(child: Text("Keranjang kosong"));
         }
 
+        // Ambil itemKeys dari read, supaya tidak trigger rebuild
+        final itemKeys = context.read<CartProvider>().items.keys.toList();
+
         return ListView.builder(
-          itemCount: itemKeys.length,
+          itemCount: itemCount,
           itemBuilder: (context, index) {
             final productName = itemKeys[index];
             return CartItemTile(productName: productName);
